@@ -6,7 +6,7 @@
 /*   By: rbarkhud <rbarkhud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 19:17:09 by rbarkhud          #+#    #+#             */
-/*   Updated: 2025/01/30 20:00:36 by rbarkhud         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:14:54 by rbarkhud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static int	digits_count(long n)
 {
 	int	count;
 
+	if (n == 0)
+		return (1);
 	count = 0;
+	if (n < 0)
+		++count;
 	while (n)
 	{
 		n /= 10;
@@ -44,7 +48,7 @@ char	*ft_itoa(int n)
 
 	i = 0;
 	num = n;
-	str = (char *)malloc(digits_count(num) + 2);
+	str = (char *)malloc(digits_count(num) + 1);
 	if (!str)
 		return (NULL);
 	if (num < 0)
